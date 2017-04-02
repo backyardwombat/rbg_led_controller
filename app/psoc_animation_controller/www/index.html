@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no">
+<title>Bluetooth SIG</title>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/utils.js"></script>
+<script>
+var device_list_hidden = false;
+var controls_hidden = true;
+var message_hidden = false;
+
+var DEVICE_LIST = 1;
+var CONTROLS = 2;
+
+var STOP = 254;
+
+function ready() {
+  init();
+}
+
+function scrollingControl(e) {
+    if (!controls_hidden) {
+        e.preventDefault();
+    }
+}
+
+function init() {
+    // prevent scrolling
+    document.addEventListener('touchmove', scrollingControl , false);
+  device_list_hidden = false;
+  controls_hidden = true;
+  message_hidden = false;
+  setDivVisibility();
+  document.getElementById('find').style.visibility = 'visible';
+  showMessage("");
+}
+
+function initSettings() {    
+}
+
+function setDivVisibility() {
+  document.getElementById('device_list').hidden = device_list_hidden;
+  document.getElementById('message').hidden = message_hidden;
+  document.getElementById('controls_page').hidden = controls_hidden;
+}
+
+</script>
+</head>
+<body onload="initSettings();">
+
+<!-- Scanning and Device List -->
+<div id="device_list" class="screen">
+<h2>RGB LED Controller</h2>
+<table>
+<tr>
+<td><button id="find" class="wide_button" onclick="app.findDevices()">Scan</button></td>
+</tr>
+</table>
+
+<div class="status" id="message"></div>
+<table id="tbl_devices">
+</table>
+</div>
+
+<!-- Controls Page -->
+<div id="controls_page" class="full_screen"  hidden="true">
+    <table>
+        <tr><td><h2>RGB LED Controller</h2></td><td>&nbsp;</td></tr>
+        <tr><td align="left"><span id="info"></span></td><td>&nbsp;<td align="right"><span id="animation_status"></span></td></tr>
+    </table>
+    <table>
+    <tr>
+    <td><button class="wide_button" onclick="app.exitControls()">Back</button></td>
+    </tr>
+    </table>
+    <h3>Color</h3>
+    <button id="btn_animation_1" class="control_button" onclick="app.selectAnimationType(1)">Red</button>
+    <button id="btn_animation_2" class="control_button" onclick="app.selectAnimationType(2)">Green</button>
+    <button id="btn_animation_3" class="control_button" onclick="app.selectAnimationType(3)">Blue</button>
+    <h3>Control</h3>
+    <button id="btn_control_1" class="control_button" onclick="app.selectControl(1)">On</button>
+    <button id="btn_control_2" class="control_button" onclick="app.selectControl(2)">Off</button>
+    <button id="btn_control_3" class="control_button" onclick="app.selectControl(3)">Brighter</button>
+    <button id="btn_control_4" class="control_button" onclick="app.selectControl(4)">Dimmer</button>
+</div>
+
+</body>
+</html>
