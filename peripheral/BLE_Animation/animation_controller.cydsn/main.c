@@ -1,13 +1,14 @@
-/* ========================================
+/* =============================================================================
  *
- * Copyright YOUR COMPANY, THE YEAR
- * All Rights Reserved
+ * Copyright Backyard Wombat Technoligies, 2017 All Rights Reserved
  * UNPUBLISHED, LICENSED SOFTWARE.
  *
- * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF your company.
+ * CONFIDENTIAL AND PROPRIETARY INFORMATION WHICH IS THE PROPERTY OF 
+ * BACKYARD WOMBAT TECHNOLOGIES.
  *
- * ========================================
+ * SUMMARY: This project controls the RGB LED on the PSoC CY8KIT-042-BLE
+ * Pioneer baseboard through BLE with a custom profile.
+ * =============================================================================
 */
 #include <main.h>
 
